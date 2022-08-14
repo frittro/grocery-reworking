@@ -26,3 +26,10 @@ For this step we will use the **`pdftotext`** command to extract the text from e
 # for file in *.pdf; do pdftotext "$file"; done
 # mv *.txt ../txt/
 ```
+
+> 🚀 *At this stage, the output files should look similar to* [*this DemoData file*](https://github.com/frittro/grocery-reworking/blob/f12d673f9c0b75c3e439ad18139952ee2bc84503/RawData/DemoData/150101__2224567890.txt).
+
+## Step 4: Capturing relevant header and footer data
+In the upcoming steps, we will be trimming our raw data files to remove the extraneous heading and footing lines, so that our raw data is focussed on the important parts of the information about the purchased products. Before we begin that trimming though, there is some important metadata that we want to be able to save from the heading and footing lines. We will be storing this metadata in the filenames for each file, so that it is kept external to the data, but still tied to the data soures.
+
+Currently, our raw data text files are named with the pattern **`yymmdd_nnnnnnnnnn.txt`** which we established in Step 2 above. We are now going to change this to include some more fields, such as the supermarket chain and branch where each transaction occurred. This information will eventually be stored in our home grocery management system along with each purchase, so that we can see where each product was purchased from. To access this information later from a script, it is therefore important to be consistent with the naming of the raw data text files. For now, the information is being delimited by an underscore ("`_`") character. The new pattern will therefore be **`yymmdd_supermarketname_branchname_nnnnnnnnnn.txt`**. The data stored in these fields needs to be clear, unambiguous, and consistent.
